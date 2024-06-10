@@ -9,8 +9,6 @@ services:
       - infisical-universal-auth-client-secret
       - infisical-agent-config
       - env-template
-    networks:
-      - infisical_network
     deploy:
       placement:
         constraints:
@@ -22,9 +20,7 @@ services:
       - 8000:8000
     volumes:
       - infisical-agent:/app
-    networks:
-      - infisical_network
-
+      
 volumes:
   infisical-agent: 
 
@@ -37,6 +33,3 @@ secrets:
     file: ./infisical-agent-config.yml
   env-template:
     file: ./env-template
-
-networks:
-  infisical_network:
