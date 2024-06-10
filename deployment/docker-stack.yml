@@ -1,0 +1,7 @@
+services:
+  app:
+    image: app
+    ports:
+      - 8000:8000
+    environment:
+      MOTD: 'slime'

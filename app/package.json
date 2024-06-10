@@ -1,0 +1,20 @@
+{
+  "name": "infisical-swarm-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
