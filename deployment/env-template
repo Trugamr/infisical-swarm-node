@@ -1,0 +1,5 @@
+{{- with secret "3cb9ffbb-ed8e-48dc-b7e0-2a0303320f2b" "prod" "/" }}
+{{- range . }}
+{{ .Key }}={{ .Value }}
+{{- end }}
+{{- end }}

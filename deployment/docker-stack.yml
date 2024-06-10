@@ -1,7 +1,42 @@
 services:
+  infisical-agent:
+    image: infisical/cli:0.18.0
+    command: agent --config=/run/secrets/infisical-agent-config
+    volumes:
+      - infisical-agent:/infisical-secrets
+    secrets:
+      - infisical-universal-auth-client-id
+      - infisical-universal-auth-client-secret
+      - infisical-agent-config
+      - env-template
+    networks:
+      - infisical_network
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
   app:
     image: app
     ports:
       - 8000:8000
-    environment:
-      MOTD: 'slime'
+    volumes:
+      - infisical-agent:/app
+    networks:
+      - infisical_network
+
+volumes:
+  infisical-agent: 
+
+secrets:
+  infisical-universal-auth-client-id:
+    external: true
+  infisical-universal-auth-client-secret:
+    external: true
+  infisical-agent-config:
+    file: ./infisical-agent-config.yml
+  env-template:
+    file: ./env-template
+
+networks:
+  infisical_network:
